@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
 project(StarEngine)
 
-set(CMAKE_EXECUTABLE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 #set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 set(EX_PROJ_SOURCE_DIR ${CMAKE_BINARY_DIR}/deps/Source)
@@ -27,6 +26,8 @@ endforeach(filen)
 add_executable(StarEngine ${ABSOLUTE_SRC_FILES})
 #add_library(StarEngine ${ABSOLUTE_SRC_FILES})
 
+set(XRENDER_LIBS Xrandr Xcursor Xinerama Xxf86vm X11)
+
 add_definitions(-DGLEW_STATIC)
 if(WIN32)
     target_link_libraries(StarEngine debug ${EX_PROJ_BUILD_DIR}/GLFW_EX/src/Debug/glfw3${CMAKE_STATIC_LIBRARY_SUFFIX})
@@ -38,5 +39,5 @@ endif(WIN32)
 if(UNIX)
     target_link_libraries(StarEngine ${EX_PROJ_BUILD_DIR}/GLFW_EX/src/libglfw3${CMAKE_STATIC_LIBRARY_SUFFIX})
     target_link_libraries(StarEngine ${EX_PROJ_BUILD_DIR}/GLEW_EX/lib/libglew${CMAKE_STATIC_LIBRARY_SUFFIX})
-    target_link_libraries(StarEngine ${OPENGL_LIBRARIES} dl pthread Xrandr Xcursor Xinerama Xxf86vm X11)
+    target_link_libraries(StarEngine ${OPENGL_LIBRARIES} ${XRENDER_LIBS} dl pthread)
 endif(UNIX)

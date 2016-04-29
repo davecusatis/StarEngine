@@ -3,7 +3,12 @@ StarEngine
 
 To build, run cmake-make(.sh or .bat)
 
-Output
-------
+Ouput - Linux
+-------------
 
-Binaries are built into ./build/bin
+Run the generated Makefile in ./build/
+
+Output - Windows
+----------------
+
+Open the generated VS project in ./build/
