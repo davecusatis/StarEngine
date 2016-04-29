@@ -8,6 +8,9 @@ set(EX_PROJ_BUILD_DIR ${CMAKE_BINARY_DIR}/deps/Build)
 
 find_package(OpenGL REQUIRED) 
 include_directories(${OPENGL_INCLUDE_DIR})
+if(UNIX)
+    find_package(X11 REQUIRED)
+endif(UNIX)
 
 configure_file(deps-CMakeLists.txt deps/CMakeLists.txt COPYONLY)
 execute_process(COMMAND ${CMAKE_COMMAND} . WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/deps)
